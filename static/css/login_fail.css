@@ -1,0 +1,39 @@
+.card {
+  border: none;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+  background-color: #f44336;
+  color: #fff;
+}
+
+.card-body {
+  background-color: #fff;
+  padding: 20px 30px 30px 30px;
+}
+
+.btn-primary {
+  background-color: transparent;
+  border: 2px solid #f44336;
+  color: #f44336;
+  font-size: 1.2rem;
+  font-weight: 600;
+  padding: 9px 15px;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #f44336;
+  border-color: #f44336;
+  color: #fff;
+}
+
+/* Estilos para la página completa */
+body {
+  background-color: #f2f2f2;
+}
+
+.container {
+  margin-top: 50px;
+}

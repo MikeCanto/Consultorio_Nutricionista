@@ -1,0 +1,55 @@
+{% extends "home.html" %}
+{% load static %}
+
+{% block content %}
+    <head>
+        <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    </head>
+    <div class="card">
+        <div class="card-header">
+            Ver pacientes: Paginacion
+        </div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Apellido Paterno</th>
+                    <th>Nombre</th>
+                    <th></th> <!-- Columna vacía para el botón de detalle -->
+                </tr>
+            </thead>
+            <tbody>
+                {% for patient in patients %}
+                    <tr>
+                        <td>{{ patient.apellido_paterno }}</td>
+                        <td>{{ patient.nombre }}</td>
+                        <td><a href="{% url 'patient_detail' patient.id %}?page={{ patients_page.number }}" class="btn btn-info">
+                                <i class="fa-solid fa-circle-info mx-1" style="color: #202060;"></i>
+                                Detalles
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <div class="pagination">
+            <span class="step-links">
+                {% if patients.has_previous %}
+                    <a href="?page=1" class="btn btn-dark">&laquo; Primera</a>
+                    <a href="?page={{ patients.previous_page_number }}" class="btn btn-dark">Anterior</a>
+                {% endif %}
+                <span class="current-page">{{ patients_page.number }}</span>
+                {% if patients.has_next %}
+                    <a href="?page={{ patients.next_page_number }}" class="btn btn-dark">Siguiente</a>
+                    <a href="?page={{ patients.paginator.num_pages }}" class="btn btn-dark">Última &raquo;</a>
+                {% endif %}
+            </span>
+        </div>
+    </div>
+    <a href="{% url 'view_patients' %}" class="btn bg-azul text-white">
+        <i class="fa-solid fa-arrow-left mx-1" style="color: #ffffff;"></i>
+        Regresar a todos los pacientes
+    </a>
+
+
+{% endblock %}

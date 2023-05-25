@@ -1,0 +1,16 @@
+{% extends "home.html" %}
+{% block content %}
+    <h1>Información del paciente</h1>
+    <ul>
+        <li>Nombre: {{ patient.nombre }}</li>
+        <li>Apellido paterno: {{ patient.apellido_paterno }}</li>
+        <li>Apellido materno: {{ patient.apellido_materno }}</li>
+        <li>Fecha de nacimiento: {{ patient.fecha_nacimiento }}</li>
+        <li>Sexo: {{ patient.sexo }}</li>
+        <li>Altura: {{ patient.altura }}</li>
+        <li>Peso: {{ patient.peso }}</li>
+        <li>¿Actividad aeróbica?: {% if patient.actividad_aerobica %}Sí{% else %}No{% endif %}</li>
+    </ul>
+
+{% endblock %}<!-- Plantilla para mostrar información de un paciente -->
+

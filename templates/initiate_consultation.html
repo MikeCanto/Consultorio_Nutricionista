@@ -1,0 +1,32 @@
+{% extends 'home.html' %}
+{% load static %}
+{% block content %}
+    <head>
+        <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    </head>
+    <div class="card">
+        <div class="card-header">
+            Iniciar Consulta
+        </div>
+        <table class="table table-striped">
+            <form method="post">
+                {% csrf_token %}
+                <label for="patient"></label>
+                <select name="patient" id="patient" class="form-control">
+                    {% for patient in patients %}
+                    <option value="{{ patient.id }}">{{ patient.nombre }} {{ patient.apellido_paterno }} {{ patient.apellido_materno }}</option>
+                    {% endfor %}
+                    </select>
+                    <br>
+                        <label for="peso"></label><input type="number" name="peso" id="peso" class="form-control" placeholder="Peso en kg">
+                    <br>
+                        <label for="observaciones"></label><textarea name="observaciones" id="observaciones" class="form-control" placeholder="Observaciones"></textarea>
+                    <br>
+                    <button type="submit" class="btn bg-azul text-white">
+                        <i class="fa-solid fa-play mx-2" style="color: #ffffff;"></i>
+                        Iniciar
+                    </button>
+            </form>
+        </table>
+    </div>
+{% endblock %}

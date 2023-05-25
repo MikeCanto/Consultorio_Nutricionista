@@ -1,0 +1,15 @@
+{% extends "home.html" %}
+
+{% block content %}
+<h2>Registro de usuarios</h2>
+{% if request.user.is_superuser%}
+<p>Lo sentimos, solo los superusuarios pueden acceder a esta página.</p>
+{% else %}
+<form method="post" action="{% url 'register' %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    {{ patient_form.as_p }}
+    <input type="submit" value="Registrarse">
+</form>
+{% endif %}
+{% endblock %}

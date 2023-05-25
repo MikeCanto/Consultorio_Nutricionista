@@ -1,0 +1,26 @@
+{% extends "home.html" %}
+{% load static %}
+
+{% block content %}
+  <h1>Ver pacientes como lista</h1>
+
+  {% if patients %}
+    <ul>
+      {% for patient in patients %}
+        <li>
+          <a href="{% url 'patient_detail' patient.id %}">{{ patient.apellido }}, {{ patient.nombre }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No hay pacientes registrados.</p>
+  {% endif %}
+
+  <a href="{% url 'home' %}" class="btn btn-secondary">Regresar</a>
+
+  <!-- CSS de Bootstrap -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+  <!-- Tu archivo CSS personalizado -->
+  <link rel="stylesheet" href="{% static 'css/view_list_patients.css' %}">
+{% endblock %}

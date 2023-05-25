@@ -1,0 +1,75 @@
+.table {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  font-size: 18px;
+  width: 100%;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+
+th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+  text-align: center;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  border-color: #6c757d;
+}
+
+.btn-secondary:hover {
+  background-color: #5a6268;
+  border-color: #545b62;
+}
+
+.assistant-info {
+  margin: 50px auto;
+  max-width: 800px;
+}
+
+.assistant-info h1 {
+  margin-bottom: 20px;
+}
+
+.instructions {
+  margin-top: 20px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  font-weight: bold;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.btn-primary:hover {
+  background-color: #0062cc;
+  border-color: #005cbf;
+}
+
+@media (max-width: 768px) {
+  .assistant-info {
+    margin: 20px auto;
+    max-width: 500px;
+  }
+
+  .table {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+}

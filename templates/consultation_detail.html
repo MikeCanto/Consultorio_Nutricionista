@@ -1,0 +1,26 @@
+{% extends 'home.html' %}
+{% load static %}
+{% block content %}
+    <head>
+        <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    </head>
+    <div class="card">
+        <div class="card-header">
+            Detalle de Consulta
+        </div>
+        <div class="card-body">
+            <table class="table table-striped">
+            <tr><th>Fecha de Consulta: {{ consultation.fecha_consulta }}</th></tr>
+            <tr><th>Nombre: {{ consultation.patient.nombre }}</th></tr>
+            <tr><th>Apellido Paterno: {{ consultation.patient.apellido_paterno }}</th></tr>
+            <tr><th>Apellido Materno: {{ consultation.patient.apellido_materno }}</th></tr>
+            <tr><th>Peso: {{ consultation.peso }} kg</th></tr>
+            <tr><th>Observaciones: {{ consultation.observaciones }}</th></tr>
+        </table>
+        </div>
+    </div>
+    <a href="{% url 'home' %}" class="btn bg-azul text-white">
+        <i class="fa-solid fa-arrow-left" style="color: #ffffff;"></i>
+        Regresar a inicio
+    </a>
+{% endblock %}

@@ -1,0 +1,97 @@
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 50px auto;
+  max-width: 500px;
+  font-size: 18px;
+}
+
+label {
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+input[type="text"] {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+input[type="submit"] {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover {
+  background-color: #0062cc;
+}
+
+.instructions {
+  font-size: 14px;
+  text-align: center;
+  margin-top: 20px;
+  color: #555;
+}
+
+/* Estilos para la información del paciente */
+.patient-info {
+  margin: 50px auto;
+  max-width: 500px;
+  font-size: 18px;
+}
+
+.patient-info h2 {
+  margin-bottom: 20px;
+}
+
+.patient-info ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.patient-info li {
+  margin-bottom: 10px;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+
+th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.instructions {
+  margin-top: 20px;
+}
+
+form {
+  margin-bottom: 20px;
+}
+
+label {
+  display: inline-block;
+  margin-bottom: 5px;
+}

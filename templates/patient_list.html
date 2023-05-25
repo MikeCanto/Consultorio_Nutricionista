@@ -1,0 +1,16 @@
+{% extends 'home.html' %}
+
+{% block content %}
+  <h1>Listado de pacientes</h1>
+  {% if patients %}
+    <ul>
+    {% for patient in patients %}
+      <li>
+        <a href="{% url 'patient_detail' patient.id %}">{{ patient.full_name }}</a>
+      </li>
+    {% endfor %}
+    </ul>
+  {% else %}
+    <p>No hay pacientes registrados.</p>
+  {% endif %}
+{% endblock %}

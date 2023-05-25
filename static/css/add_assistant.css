@@ -1,0 +1,41 @@
+card {
+      margin-top: 50px;
+    }
+
+    .card-header {
+      background-color: #81a4cd!important;
+      color: #fff!important;
+      text-align: center;
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .btn-primary {
+      background-color: #881d1d!important;
+      border-color: #66ff00!important;
+    }
+
+    .btn-primary:hover {
+      background-color: #a3c498!important;
+      border-color: #005cbf!important;
+    }
+
+    .btn-secondary {
+      background-color: #1b3152!important;
+      border-color: #66ff00!important;
+    }
+
+    .btn-secondary:hover {
+      background-color: #1b3152!important;
+      border-color: #66ff00!important;
+    }
+
+    .bg-naranja {
+        background-color: #f17300 !important;
+        border-color: #f17300 !important;
+
+}

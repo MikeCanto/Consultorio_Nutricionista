@@ -1,0 +1,60 @@
+{% extends "home.html" %}
+{% load static %}
+{% block content %}
+    <head>
+        <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    </head>
+    <div class="card">
+        <div class="card-header">
+            Lista de asistentes
+        </div>
+        {% if assistants %}
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Apellido Paterno</th>
+                        <th>Email</th>
+                        <th>Opciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for assistant in assistants %}
+                    <tr>
+                        <td>{{ assistant.first_name }}</td>
+                        <td>{{ assistant.last_name }}</td>
+                        <td>{{ assistant.email }}</td>
+                        <td>
+                            <a href="{% url 'edit_assistant' assistant.id %}" class="btn btn-warning">
+                                <i class="fa-solid fa-pen-to-square" style="color: #6c591e;"></i>
+                                Editar
+                            </a>
+                            <a href="{% url 'delete_assistant' assistant.id %}" class="btn btn-danger" onclick="return confirm('¿Está seguro que desea eliminar a este asistente?');">
+                                <i class="fa-solid fa-trash" style="color: #ffffff;"></i>
+                                Eliminar
+                            </a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>No hay asistentes registrados.</p>
+        {% endif %}
+    </div>
+
+
+
+    <a href="{% url 'home' %}" class="btn bg-azul text-white">
+        <i class="fa-solid fa-arrow-left" style="color: #ffffff;"></i>
+        Regresar a inicio
+    </a>
+    <a href="{% url 'add_assistant' %}" class="btn btn-success">
+        <i class="fa-solid fa-user-plus" style="color: #ffffff;"></i>
+        Agregar asistente
+    </a>
+
+
+
+
+{% endblock %}

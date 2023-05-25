@@ -1,0 +1,78 @@
+{% extends 'home.html' %}
+{% load static %}
+
+{% block content %}
+    <head>
+        <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    </head>
+    <div class="row">
+        <div class="col-sm-6 mb-3 mb-sm-0">
+            <div class="card ">
+                <div class="card-body">
+                    <h5 class="card-header">Datos del paciente</h5>
+                    <h5 class="mb-4"> <strong>Paciente: </strong>
+                        {{ patient.nombre }} {{ patient.apellido_paterno }} {{ patient.apellido_materno }}</h5>
+                    <p><strong>Sexo:</strong> {{ patient.get_sexo_display }}</p>
+                    <p><strong>¿Realiza actividad aeróbica?:</strong> {% if patient.realiza_actividad_aerobica %}Sí{% else %}No{% endif %}</p>
+                    {% if user.is_superuser %}
+                        <p><strong>Fecha de Nacimiento:</strong> {{ patient.fecha_nacimiento }}</p>
+                        <p><strong>Altura:</strong> {{ patient.altura }} m</p>
+                        <p><strong>Peso Inicial:</strong> {{ patient.peso }} kg</p>
+                        {% with latest_consultation=patient.consultation_set.latest %}
+                                <p><strong>IMC:</strong> {{ latest_consultation.imc }}</p>
+                            {% with previous_consultation=patient.consultation_set.all|dictsortreversed:"fecha_consulta"|last %}
+                                {% if previous_consultation or not previous_consultation%}
+                                    <p><strong>IMC Anterior:</strong> {{ previous_consultation.imc }}</p>
+                                {% else %}
+                                    <p><strong>IMC Anterior:</strong> No hay consulta anterior.</p>
+                                {% endif %}
+                            {% endwith %}
+                        {% endwith %}
+                        <p><strong>Id de paciente:</strong> {{ patient.id }}</p>
+                    {% endif %}
+                    <a href="{% url 'view_patients' %}" class="btn bg-azul text-white">
+                        <i class="fa-solid fa-arrow-left mx-1" style="color: #ffffff;"></i>
+                        Regresar a todos los pacientes
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-header">Historial de consultas</h5>
+                {% if patient.consultation_set.exists %}
+                    {% for consultation in patient.consultation_set.all|dictsortreversed:"fecha_consulta" %}
+                        <div class="mb-4">
+                            <h5><strong> Consulta {{ forloop.revcounter }}</strong></h5>
+                            <p><strong>Fecha de Consulta:</strong> {{ consultation.fecha_consulta }}</p>
+                            {% if user.is_superuser %}
+                                <p><strong>Peso:</strong> {{ consultation.peso }}</p>
+                            {% endif %}
+                            <p><strong>Observaciones:</strong> {{ consultation.observaciones }}</p>
+                            {% if user.is_superuser %}
+                                <p><strong>IMC:</strong> {{ consultation.imc }}</p>
+                            {% endif %}
+                        <!-- Mostrar otros detalles de la consulta aquí -->
+                        </div>
+                        {% if not forloop.last %}
+                        <hr> <!-- Add a separator between consultations -->
+                        {% endif %}
+                    {% endfor %}
+                {% else %}
+                <p>No hay consultas registradas.</p>
+                {% endif %}
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    {% if user.is_superuser %}
+        <div class="row justify-content-center mt-5">
+            <div class="col-md-6">
+
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}

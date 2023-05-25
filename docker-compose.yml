@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  db:
+    image: sha256:d8d0aca13a9ec95224be1f6f9d835b06ff6f9d0aa63caa3768ccacbf9bd61b57
+    environment:
+      MYSQL_DATABASE: 'consultorio'
+      MYSQL_USER: 'root'
+      MYSQL_PASSWORD: '123456'
+      MYSQL_ROOT_PASSWORD: '123456'
+    ports:
+      - "3307:3306"
+
+  web:
+    build: .
+    command: python3 manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/code
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db

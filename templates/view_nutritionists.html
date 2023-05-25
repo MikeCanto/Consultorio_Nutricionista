@@ -1,0 +1,46 @@
+{% extends "home.html" %}
+{% load static %}
+{% block content %}
+<h1>Lista de asistentes</h1>
+
+{% if assistants %}
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Apellido Paterno</th>
+                <th>Apellido Materno</th>
+                <th>Email</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            {% for assistant in assistants %}
+            <tr>
+                <td>{{ assistant.first_name }}</td>
+                <td>{{ assistant.last_name }}</td>
+                <td>{{ assistant.apellido_materno }}</td>
+                <td>{{ assistant.email }}</td>
+                <td>
+                    <a href="{% url 'edit_nutritionist' assistant.id %}" class="btn btn-primary">Editar</a>
+                    <a href="{% url 'delete_nutritionist' assistant.id %}" class="btn btn-danger" onclick="return confirm('¿Está seguro que desea eliminar a este asistente?');">Eliminar</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <p>No hay asistentes registrados.</p>
+{% endif %}
+
+<a href="{% url 'add_nutritionist' %}" class="btn btn-primary">Agregar nutricionista</a>
+<a href="{% url 'home' %}" class="btn btn-secondary">Regresar a inicio</a>
+
+<!-- CSS de Bootstrap -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+<!-- Tu archivo CSS personalizado -->
+<link rel="stylesheet" href="{% static 'css/view_nutritionist.css' %}">
+
+
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends "home.html" %}
+{% load static %}
+{% block content %}
+
+  <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/add_nutritionist.css' %}">
+  </head>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 mx-auto">
+        <div class="card">
+          <div class="card-header">
+            <a class="text-center">Agregar paciente</a>
+          </div>
+          <div class="card-body">
+            <form method="post">
+              {% csrf_token %}
+              {{ form.as_p }}
+              <div class="form-group">
+                <button type="submit" class="btn col-5 bg-success text-white">
+                    <i class="fa-solid fa-check mx-1" style="color: #ffffff;"></i>
+                    Agregar
+                </button>
+                <a href="{% url 'home' %}" class="btn col-5 bg-danger text-white">
+                    <i class="fa-solid fa-xmark mx-1" style="color: #ffffff;"></i>
+                    Cancelar
+                </a>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+
+

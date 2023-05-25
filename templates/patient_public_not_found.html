@@ -1,0 +1,31 @@
+{% extends 'home.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Paciente no encontrado</title>
+    <link rel="stylesheet" href="{% static 'css/patient_public_not_found.css' %}">
+</head>
+<body>
+    {% block content %}
+    <div class="container">
+        <div class="row justify-content-center mt-5">
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-header bg-danger text-white">
+                        <h1 class="text-center">Paciente no encontrado</h1>
+                    </div>
+                    <div class="card-body">
+                        <p class="lead text-center">Lo sentimos, no se ha encontrado ningún paciente con el ID proporcionado.</p>
+                        <p class="lead text-center">Por favor, verifique el ID ingresado e intente nuevamente.</p>
+                        <div class="d-grid gap-2 col-6 mx-auto mt-4">
+                            <a href="{% url 'patient_public_form' %}" class="btn btn-primary">Probar otro ID</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endblock %}
+</body>
+</html>

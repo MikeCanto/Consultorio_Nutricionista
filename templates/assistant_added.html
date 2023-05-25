@@ -1,0 +1,20 @@
+{% extends "home.html" %}
+{% load static %}
+
+{% block content %}
+    <head>
+        <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    </head>
+    <div class="card text-center">
+        <div class="card-header">
+            Asistente agregado con éxito
+        </div>
+        <div class="card-body">
+            <p class="card-text">El asistente ha sido agregado correctamente a la base de datos.</p>
+            <a href="{% url 'home' %}" class="btn bg-azul text-white">
+                <i class="fa-solid fa-arrow-left" style="color: #ffffff;"></i>
+                Regresar a inicio
+            </a>
+        </div>
+    </div>
+{% endblock %}

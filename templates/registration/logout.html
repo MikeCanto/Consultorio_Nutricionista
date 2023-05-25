@@ -1,0 +1,15 @@
+{% extends "home.html" %}
+{% load static %}
+{% block content %}
+<div class="logout-container">
+  <h1>Logged out!</h1>
+  <a href="{% url 'login'%}" class="btn btn-primary">Click here to login again.</a>
+</div>
+{% endblock %}
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+<!-- Custom CSS -->
+<link rel="stylesheet" href="{% static 'css/logout.css' %}">
+
